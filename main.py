@@ -40,19 +40,19 @@ class MyGame(arcade.Window):
         self.player_sprite.center_y = 60
         self.player_list.append(self.player_sprite)
 
-        # Create the coins
-        for i in range(50):
-            coin = arcade.Sprite("sprites\\gold-coin.jpg", 0.08)
-            coin.center_x = self.wall_size*2 + random.randrange(self.win_width - self.wall_size*4)
-            coin.center_y = self.wall_size*2 + random.randrange(self.win_height - self.wall_size*4)
-            self.coin_list.append(coin)
-
         # Create the zombies
-        for i in range(5):
+        for i in range(10):
             zombie = arcade.Sprite("sprites\\minecraft-zombie.jpg", 0.1)
             zombie.center_x = self.wall_size*3 + random.randrange(self.win_width - self.wall_size*6)
             zombie.center_y = self.wall_size*3 + random.randrange(self.win_height - self.wall_size*6)
             self.zombie_list.append(zombie)
+
+        # Create the coins
+        for i in range(100):
+            coin = arcade.Sprite("sprites\\gold-coin.jpg", 0.08)
+            coin.center_x = self.wall_size*2 + random.randrange(self.win_width - self.wall_size*4)
+            coin.center_y = self.wall_size*2 + random.randrange(self.win_height - self.wall_size*4)
+            self.coin_list.append(coin)
 
         # Create the walls
         for i in range(0, self.win_height, self.wall_size):
@@ -86,8 +86,8 @@ class MyGame(arcade.Window):
     def on_draw(self):
         """ Render the screen. """
         arcade.start_render()
-        self.coin_list.draw()
         self.zombie_list.draw()
+        self.coin_list.draw()
         self.player_list.draw()
         self.wall_list.draw()
         arcade.draw_text("Score: " + str(self.score), 5, 2, arcade.color.WHITE)
